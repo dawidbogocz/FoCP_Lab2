@@ -9,10 +9,16 @@ bool is_prime(int number){
     return true;
 }
 
-int main(){
+int read_int(){
     std::cout << "Please introduce a number" << std::endl;
     int number;
     std::cin >> number;
+
+    return number;
+}
+
+int main(){
+    int number = read_int();
 
     if(is_prime(number)){
         std::cout << "Your number is prime" << std::endl;
