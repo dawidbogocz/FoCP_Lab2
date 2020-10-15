@@ -1,20 +1,25 @@
 #include <iostream>
 
-int main(){
-    // 1- Read a number from console
-    // 2- Figure out if the number is prime or not
-    // 3- Print the result to the console
+bool is_prime(int number){
+    for(int i=2 ; i<number ; i++){
+        if(number % i == 0){
+            return false;
+        }
+    }
+    return true;
+}
 
+int main(){
     std::cout << "Please introduce a number" << std::endl;
     int number;
     std::cin >> number;
 
-    for(int i=2;i<number;i++){
-        if(number%i==0){
-            std::cout << "Your number is not prime" << std::endl;
-            return 0;
-        }
+    if(is_prime(number)){
+        std::cout << "Your number is prime" << std::endl;
+    }else{
+        std::cout << "Your number is not prime" << std::endl;
     }
-    std::cout << "Your number is prime" << std::endl;
+
+
     return 0;
 }
