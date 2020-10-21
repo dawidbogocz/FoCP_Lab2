@@ -13,25 +13,6 @@ int read_int() //function taking input from user
     return n;
 }
 
-/**
-Function that creates multiplication table with number of rows and columns given by user.
-    @param I number of rows (default number is 5)
-    @param J number of columns (default number is 5)
-**/
-int create_table(int I=5, int J=5)
-{
-    int s;
-    for (int i=1; i<=I; i++)
-    {
-        std::cout<<i<<" |";
-        for (int j=1; j<=J; j++){
-            s=j*i;
-            std::cout<<std::setw(3)<<s<< "  ";
-        }
-        std::cout<<std::endl;
-    }
-}
-
 int main(){
 
     std::cout<<"How long should be your table?"<<std::endl;
@@ -43,22 +24,30 @@ int main(){
         return 0;
     }
 
+    std::vector<std::vector<int>>table;
     int s;
-    for (int i=1; i<=1; i++)
+
+    for (int i=1; i<=tn; i++)
     {
-        std::cout<<"  |";
+        std::vector<int>row;
         for (int j=1; j<=tn; j++){
             s=j*i;
-            std::cout<<std::setw(3)<<s<< "  ";
+            row.push_back(s);
         }
-        std::cout<<std::endl;
+        table.push_back(row);
     }
 
-    std::cout<<"--+------------------------------------------"<<std::endl;
-    create_table(tn, tn);
-    std::cout<<"---------------------------------------------"<<std::endl;
+    std::ofstream file;
+    file.open("values.txt");
 
+    for( int i=0; i<tn; i++){
+        for( int j=0; j<tn; j++){
+        file<<table[i][j]<<" ";
+        }
+        file<<"\n";
+    }
 
+    file.close();
 
     return 0;
 }
